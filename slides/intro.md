@@ -82,7 +82,7 @@ group {
 ```java
 @DataProvider(name = "test1")
 public static Object[][] primeNumbers() {
-    return new Object[][] {{2, true}, {6, false}, 
+    return new Object[][] { {2, true}, {6, false}, 
         {19, true}, {22, false}, {23, true}};
 }
 
