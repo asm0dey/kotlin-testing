@@ -1,21 +1,18 @@
 const gulp = require('gulp');
-const concat = require('gulp-concat');
+const {archiver, cleanCss, concat, htmlReplace, htmlmin, imagemin, rename, sass, sourcemaps, uglifyEs} = require('gulp-load-plugins')({
+    postRequireTransforms: {
+        uglifyEs: function (uglifyEs) {
+            return uglifyEs.default;
+        }
+    }
+});
 const merge = require('merge-stream');
-const sass = require('gulp-sass');
-let sourcemaps = require('gulp-sourcemaps');
-let cleanCSS = require('gulp-clean-css');
-const htmlmin = require('gulp-htmlmin');
-const rename = require('gulp-rename');
-const uglify = require('gulp-uglify-es').default;
 const del = require('del');
-const htmlreplace = require('gulp-html-replace');
-sass.compiler = require('node-sass');
-const imagemin = require('gulp-imagemin');
-const archiver = require('gulp-archiver');
 const browserSync = require('browser-sync').create();
+sass.compiler = require('node-sass');
 
-
-const css = ['css/reset.css', 'css/additional.css', 'css/theme/sky.css', 'css/fonts.css', 'lib/css/zenburn.css', 'plugin/verticator/verticator.css'];
+const htmlminOptions = {collapseWhitespace: true, minifyCSS: true, minifyJS: true, removeComments: true};
+const css = ['css/reset.css', 'css/additional.css', 'css/theme/league.css', 'css/fonts.css', 'lib/css/zenburn.css', 'plugin/verticator/verticator.css'];
 gulp.task('styles', () => {
     let sassStream = gulp.src('./css/*.scss')
         .pipe(sass())
@@ -29,13 +26,13 @@ gulp.task('styles', () => {
 
     let printCss = gulp.src('css/print/*.css')
         .pipe(sourcemaps.init())
-        .pipe(cleanCSS({compatibility: 'ie10'}))
+        .pipe(cleanCss({compatibility: 'ie10'}))
         .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest('dist/css/print/'));
 
     const cssBundle = merge(sassStream, cssStream)
         .pipe(concat('styles.min.css'))
-        .pipe(cleanCSS({compatibility: 'ie10'}))
+        .pipe(cleanCss({compatibility: 'ie10'}))
         .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest('./dist/css'));
 
@@ -57,12 +54,13 @@ gulp.task('js', () => {
         .pipe(rename(function (path) {
             path.extname = '.min.js'
         }))
-        .pipe(uglify())
+        .pipe(uglifyEs())
         .pipe(sourcemaps.write("./maps")) // Inline source maps.
         .pipe(gulp.dest('./dist/js'));
 
+
     const notesHtml = gulp.src('plugin/notes/notes.html')
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(htmlmin(htmlminOptions))
         .pipe(gulp.dest('./dist/js'));
 
     return merge(localjs, notesHtml)
@@ -86,12 +84,12 @@ gulp.task('img', () => {
 gulp.task('html', () => {
     return gulp
         .src('index.html')
-        .pipe(htmlreplace({
+        .pipe(htmlReplace({
             "css": "css/styles.min.css"
         }, {
             resolvePaths: true
         }))
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(htmlmin(htmlminOptions))
         .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream())
 });
@@ -109,7 +107,9 @@ gulp.task('serve', gulp.series('default', function () {
 
     gulp.watch('slides/*', gulp.series('md'));
     gulp.watch('index.html', gulp.series('html'));
+    gulp.watch('images/', gulp.series('img'));
     gulp.watch(js, gulp.series('js'));
+    gulp.watch('gulpfile.js', gulp.series('index'));
     gulp.watch(css, gulp.series('styles'));
     gulp.watch('./css/*.scss', gulp.series('styles'));
     gulp.watch("dist/**/*").on('change', browserSync.reload);

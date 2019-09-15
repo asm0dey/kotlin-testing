@@ -1,23 +1,22 @@
 {
-  "name": "reveal.js",
-  "version": "3.8.0",
+  "name": "Kotlin-testing",
+  "version": "1.0.0",
   "description": "The HTML Presentation Framework",
   "homepage": "http://revealjs.com",
-  "subdomain": "revealjs",
-  "main": "js/reveal.js",
+  "main": "index.html",
   "scripts": {
     "start": "gulp serve",
     "zip": "gulp zip",
     "build": "gulp"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Pavel Finkelshteyn",
+    "email": "pavel.finkelshtein@gmail.com",
+    "web": "https://asm0dey.ru"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/asm0dey/kotlin-testing.git"
   },
   "engines": {
     "node": ">=9.0.0"
@@ -33,6 +32,7 @@
     "gulp-html-replace": "^1.6.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^6.1.0",
+    "gulp-load-plugins": "^2.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
