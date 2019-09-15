@@ -4,3 +4,13 @@ node_js:
 script:
   - yarn build
 cache: npm
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  target_branch: gh-pages
+  keep_history: false
+  local_dir: dist
+  deployment_file: true
+  on:
+    branch: master
