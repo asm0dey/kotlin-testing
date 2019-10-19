@@ -1,6 +1,9 @@
-## «Fullstack» тестирование на котлине
+## Kotlintest и
+## все-все-все
 
-Паша Финкельштейн, Lamoda
+<img class="noborder" width="200px" src="images/winney.png"></img>
+
+Паша Финкельштейн, Lamoda 
 
 ---
 
@@ -55,7 +58,7 @@ class MyVeryImportantTest {
 ---
 
 ## Добро пожаловать в плоский мир
-<!-- .slide: data-background="/images/world.jpg" -->
+<!-- .slide: data-background="images/world.jpg" -->
 
 ---
 
@@ -123,11 +126,20 @@ void testWithMultiArgMethodSource(String str,
 
 ## Тесты должны читаться легко 
 
-![](/images/crowd.svg) <!-- .element: class="noborder" style="filter: invert(94%)" -->
+![](images/crowd.svg) <!-- .element: class="noborder" style="filter: invert(94%)" -->
 
 ---
 
 # kotlintest
+
+---
+
+## Но есть и проблемы
+
+* Property-based тесты не имеют уникального идентификатора (*но в пути*)
+    * В jqwik сделано лучше
+* В репортах логгируется только последняя текстовая часть теста
+* В IDEA поддержка так себе: тесты нельзя запускать по одному
 
 ---
 
