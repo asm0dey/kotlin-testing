@@ -1,47 +1,18 @@
 {
-  "name": "Kotlin-testing",
+  "name": "devops-de",
   "version": "1.0.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://revealjs.com",
   "main": "index.html",
+  "license": "MIT",
   "scripts": {
-    "start": "gulp serve",
-    "zip": "gulp zip",
-    "build": "gulp"
-  },
-  "author": {
-    "name": "Pavel Finkelshteyn",
-    "email": "pavel.finkelshtein@gmail.com",
-    "web": "https://asm0dey.ru"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/asm0dey/kotlin-testing.git"
-  },
-  "engines": {
-    "node": ">=9.0.0"
+    "spelling": "yaspeller index.md",
+    "build": "marp index.md",
+    "build-pdf": "marp --allow-local-files --pdf index.md",
+    "build-pptx": "marp --allow-local-files --pptx index.md",
+    "serve": "marp server --watch index.md"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "del": "^5.1.0",
-    "express": "^4.16.2",
-    "gulp": "^4.0.2",
-    "gulp-archiver": "^1.0.0",
-    "gulp-clean-css": "^4.2.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-html-replace": "^1.6.2",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-imagemin": "^6.1.0",
-    "gulp-load-plugins": "^2.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify-es": "^1.0.4",
-    "merge-stream": "^2.0.0",
-    "mustache": "^3.1.0",
-    "node-sass": "^4.12.0",
-    "readable-stream": "latest",
-    "socket.io": "^2.2.0"
+    "@marp-team/marp-cli": "^0.17.0",
+    "yaspeller": "^6.0.2"
   },
-  "license": "MIT"
+  "author": "asm0dey"
 }
