@@ -25,7 +25,7 @@ _footer: ""
 
 ![height:300](images/winney.png)
 
-## <!-- fit --> Паша Финкельштен, Jetbrains
+## <!-- fit --> Паша Финкельштейн, Jetbrains
 
 ---
 <!--
@@ -91,13 +91,14 @@ _class: lead
 ## А хочется прекрасного
 
 ```kotlin
-group {
-    subgroup {
-        checkOneThing{ /- snip */ }
-        checkAnotherThing{ /- snip  */ }
+passwordService {
+    shouldHash {
+        length { /* snip */ }
+        salt { /* snip  */ }
     }
-    subgroup2 {
-        checkSmthElse()
+    shouldCheck {
+        validPasswords()
+        invalidPasswords()
     }   
 }
 ```
@@ -156,8 +157,42 @@ void testWithMultiArgMethodSource(String str,
 
 ---
 <!-- _class: lead -->
-# <!-- fit --> Kotlintest
+# Поговорим о безопасности
 
+![height:500](images/safety.jpg)
+
+---
+## Безопасность на лесопилке
+
+Надо хранить пароли. Но как?
+
+- Plain
+- MD5(plain)
+- MD5(plain+salt)
+- MD5(md5(plain)+salt)
+
+Быстро! 
+**200 GH/s** @ 8x Nvidia GTX 1080 Founders Edition with *Hashcat*
+
+---
+## И что делать?
+
+### Плакать
+
+#### Или использовать bcrypt/scrypt
+
+
+Хэш начинается с магического `$2a$10`
+
+`$2a` — версия bcrypt
+`$10` — количество раундов «соления»
+
+Они **очень** медленные (100/1000 в секунду)
+
+---
+<!-- _class: lead -->
+# <!-- fit --> Kotlintest
+## It's demo time!
 ---
 
 ## Но есть и проблемы
@@ -182,6 +217,6 @@ Kotlintest решает для нас проблемы
 ## <!-- fit --> Спасибо! Вопросы?
 
 
-it.asm0dey.ru
 asm0di0 @ Twitter
 asm0dey @ Telegram
+it.asm0dey.ru
