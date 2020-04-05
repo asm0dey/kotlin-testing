@@ -6,12 +6,13 @@ theme: gaia
 size: 4K
 class: default
 paginate: true
-footer: @asm0di0 at Twitter&emsp13;&emsp13;@asm0dey at Telegram&emsp13;&emsp13;@JugEkb
+footer: @asm0di0 at Twitter&emsp13;&emsp13;@asm0dey at Telegram&emsp13;&emsp13;@snowone_conf
 ---
 <style>
 .hljs-variable { color: lightblue }
 .hljs-string { color: lightgreen }
 .hljs-params { color: #77c6d3 }
+footer { color: white }
 </style>
 <!--
 backgroundImage: "linear-gradient(to bottom, #000 0%, #1a2028 50%, #293845 100%)"
@@ -23,9 +24,19 @@ _footer: ""
 
 # <!-- fit --> Kotlintest и все-все-все
 
-![height:300](images/winney.png)
+![height:300 drop-shadow](images/winney.png)
 
 ## <!-- fit --> Паша Финкельштейн, Jetbrains
+
+---
+<style scoped>
+li { font-size: 50px }
+</style>
+
+# Twitter
+
+- @asm0di0
+- @snowone_conf
 
 ---
 <!--
@@ -64,6 +75,7 @@ _class: lead
 <!--
 _class: lead
 -->
+![bg brightness:0.7](https://source.unsplash.com/i--IN3cvEjg)
 ## <!-- fit --> Но зачем?
 
 ---
@@ -84,7 +96,7 @@ class MyVeryImportantTest {
 <!-- 
 _class: lead
  -->
-![bg](images/world.jpg)
+![bg brightness:0.6](images/world.jpg)
 # Добро пожаловать в плоский мир
 
 ---
@@ -117,7 +129,7 @@ public static Object[][] primeNumbers() {
 
 @Test(dataProvider = "test1") 
 void testPrimeNumberChecker(Integer inputNumber, 
-        Boolean expectedResult){ /- snip */}
+        Boolean expectedResult){ /* snip */}
 ```
 
 ---
@@ -135,7 +147,7 @@ static Stream<Arguments> stringIntAndListProvider() {
 @ParameterizedTest
 @MethodSource("stringIntAndListProvider")
 void testWithMultiArgMethodSource(String str, 
-    int num, List<String> list) {/- snip */}
+    int num, List<String> list) {/* snip */}
 ```
 
 ---
@@ -156,10 +168,15 @@ void testWithMultiArgMethodSource(String str,
 ![](images/crowd.svg)
 
 ---
-<!-- _class: lead -->
-# Поговорим о безопасности
+<!-- 
+_footer: ""
+_class: lead
+ -->
 
-![height:500](images/safety.jpg)
+![bg left:60% fit brightness:110%](images/safety.jpg)
+
+# Сага о 
+# <!-- fit --> безопасности
 
 ---
 ## Безопасность на лесопилке
